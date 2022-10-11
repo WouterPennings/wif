@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="margin: 30px; padding: 0">
+    <script src="engine-web/wif.js"></script>
+    <script>
+        function start() {
+            let element = document.getElementById("canvas");
+            if(element != undefined) {
+                element.remove();
+            }
+            let input = document.getElementById("input").value;
+            let canvas = visualize(input);
+
+            document.getElementsByTagName("body")[0].appendChild(canvas);
+        }
+    </script>
+    <h1>Wouter's Image Format Visualizer</h1>
+    <p>
+        Welcome to an simple implementation of the WIF (Wouter's image format). 
+        In the textbox below you can paste (or write) an image following the WIF specification.<br>
+        Wouter's image format is made to be extremely easy to visualize, but especially to create and use an existing Visualizer, like this :0<br><br>
+        The specification and more information can be found on <a href="https://github.com/WouterPennings/wif">GitHub</a>
+    </p>
+    <textarea name="wif-input" id="input" cols="90" rows="15" placeholder="Input for wif file"></textarea>
+    <br>
+    <input id="generate_button" type="button" value="Visualise" onclick="start();" />
+    <br>
+    <br>
+</body>
+</html>
