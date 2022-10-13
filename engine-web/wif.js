@@ -11,7 +11,7 @@ function lex_input(input) {
     return parts2;
 }
 
-function visualize(input) {
+function render(input) {
     let numbers = lex_input(input);
     const width = parseInt(numbers.shift());
     const height = parseInt(numbers.shift());

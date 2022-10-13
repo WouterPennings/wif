@@ -5,7 +5,7 @@ def lex_input(input):
     parts = input.split(' ')
     return [part for part in parts if part.isalnum()]
 
-def visualize(file):
+def render(file):
     print(f"Info: loading {file}")
     input = open(file, 'r').read()
     numbers = lex_input(input)
@@ -58,5 +58,5 @@ if __name__ == "__main__":
     elif not args[1][-4:] == ".wif":
         print("Expected a *.wif file")
     else:    
-        visualize(args[1])
+        render(args[1])
     
