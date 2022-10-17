@@ -20,7 +20,7 @@ Currently, there are a couple of examples, and they are in the [examples](/examp
 The image specification is very simple, and consists of two parts:
 
  1. Defining the size of the image, sometimes refered to as the "frame". You define the width and the height, both in pixels, seperated by whitespace.
- 2. The second part is a list of hexadecimal RGB color codes; one for each pixel, formatted like this: `ff5733`. These are also seperated by whitespace. The pixel color codes are sorted by going horizontal, left to right, from top to bottom. The first code is the top-left pixel of the image, and the last one is the bottom-right pixel of the image.
+ 2. The second part is a list of hexadecimal RGBA color codes; one for each pixel, formatted like this: `ff5733` or like this: `ff5733ff`. When not explicitly stating the alpha value, it will default to 255. These are also seperated by whitespace. The pixel color codes are sorted by going horizontal, left to right, from top to bottom. The first code is the top-left pixel of the image, and the last one is the bottom-right pixel of the image.
 
 When refering to whitespace, there is no limit, as long as there is at least one. Of course, more whitespace does not add anything, it only makes the file larger.
 
@@ -45,4 +45,10 @@ Color code for black: `000000`, and white: `ffffff`. The file should look someth
 
 ```
 3 3 000000 ffffff 000000 ffffff 000000 ffffff 000000 ffffff 000000
+```
+
+or something like this:
+
+```
+3 3 000000ff ffffffff 000000ff ffffffff 000000ff ffffffff 000000ff ffffffff 000000ff
 ```
