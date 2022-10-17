@@ -23,13 +23,19 @@ pub fn lex_file(path: String) -> Result<Vec<String>, String> {
 }
 
 /// Taking an hexagonal color code: `3d45aa` to decimal RGB code
-pub fn pixel_to_color(pixel: String) -> (u8, u8, u8) {
+pub fn pixel_to_color(pixel: String) -> (u8, u8, u8, u8) {
     use std::i64;
     let red = i64::from_str_radix(pixel[..2].to_string().as_str(), 16).unwrap() as u8;
     let green = i64::from_str_radix(pixel[2..4].to_string().as_str(), 16).unwrap() as u8;
-    let blue = i64::from_str_radix(pixel[4..].to_string().as_str(), 16).unwrap() as u8;
+    let blue = i64::from_str_radix(pixel[4..6].to_string().as_str(), 16).unwrap() as u8;
 
-    (red, green, blue)
+    let alpha: u8 = if pixel.len() > 6 {
+        i64::from_str_radix(pixel[6..8].to_string().as_str(), 16).unwrap() as u8
+    } else {
+        255
+    };
+
+    (red, green, blue, alpha)
 }
 
 pub fn render(path: String) -> Result<(), String> {
@@ -64,7 +70,7 @@ pub fn render(path: String) -> Result<(), String> {
     let mut y: u32 = 0;
     for pixel in pixels.iter().skip(2) {
         let colors = pixel_to_color(pixel.to_string());
-        canvas.set_draw_color(Color::RGB(colors.0, colors.1, colors.2));
+        canvas.set_draw_color(Color::RGBA(colors.0, colors.1, colors.2, colors.3));
         if let Err(str) = canvas.draw_point(Point::new(x as i32, y as i32)) {
             return Err(str);
         }

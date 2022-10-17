@@ -25,8 +25,11 @@ def render(file):
         red   = int(color[:2], 16)
         green = int(color[2:4], 16)
         blue  = int(color[4:], 16)
+        alpha = 255
+        if len(color) == 8:
+            alpha = int(color[6:], 16)
 
-        cv.rectangle(img,(x,y),(x+1, y+1),(red,green,blue),-1)
+        cv.rectangle(img,(x,y),(x+1, y+1),(red,green,blue, alpha),-1)
 
         x += 1
         if x == width:

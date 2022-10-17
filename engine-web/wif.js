@@ -35,6 +35,10 @@ function render(input) {
             let red = numbers[index].substring(0, 2).replace(/^#/, '');
             let green = numbers[index].substring(2, 4).replace(/^#/, '');
             let blue = numbers[index].substring(4, 6).replace(/^#/, '');
+            let alpha = 255
+            if( len(numbers) === 8) {
+                alpha = numbers[index].substring(6, 8).replace(/^#/, '');
+            }
             
             ctx.fillStyle = "#"+red+green+blue+" ";
             ctx.fillRect(i*size, j*size, size, size)
