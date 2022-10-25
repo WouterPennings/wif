@@ -36,7 +36,7 @@ function render(input) {
             let green = numbers[index].substring(2, 4).replace(/^#/, '');
             let blue = numbers[index].substring(4, 6).replace(/^#/, '');
             let alpha = 255
-            if( len(numbers) === 8) {
+            if( numbers.length === 8) {
                 alpha = numbers[index].substring(6, 8).replace(/^#/, '');
             }
             
